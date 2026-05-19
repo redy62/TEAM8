@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		F121FE8C2FBC9B040092D07A /* TEAM8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TEAM8.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F121FE8C2FBC9B040092D07A /* Mealo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mealo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +40,7 @@
 		F121FE8D2FBC9B040092D07A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F121FE8C2FBC9B040092D07A /* TEAM8.app */,
+				F121FE8C2FBC9B040092D07A /* Mealo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F121FE8B2FBC9B040092D07A /* TEAM8 */ = {
+		F121FE8B2FBC9B040092D07A /* Mealo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F121FE972FBC9B050092D07A /* Build configuration list for PBXNativeTarget "TEAM8" */;
+			buildConfigurationList = F121FE972FBC9B050092D07A /* Build configuration list for PBXNativeTarget "Mealo" */;
 			buildPhases = (
 				F121FE882FBC9B040092D07A /* Sources */,
 				F121FE892FBC9B040092D07A /* Frameworks */,
@@ -63,11 +63,11 @@
 			fileSystemSynchronizedGroups = (
 				F121FE8E2FBC9B040092D07A /* TEAM8 */,
 			);
-			name = TEAM8;
+			name = Mealo;
 			packageProductDependencies = (
 			);
 			productName = TEAM8;
-			productReference = F121FE8C2FBC9B040092D07A /* TEAM8.app */;
+			productReference = F121FE8C2FBC9B040092D07A /* Mealo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F121FE872FBC9B040092D07A /* Build configuration list for PBXProject "TEAM8" */;
+			buildConfigurationList = F121FE872FBC9B040092D07A /* Build configuration list for PBXProject "Mealo" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F121FE8B2FBC9B040092D07A /* TEAM8 */,
+				F121FE8B2FBC9B040092D07A /* Mealo */,
 			);
 		};
 /* End PBXProject section */
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F121FE872FBC9B040092D07A /* Build configuration list for PBXProject "TEAM8" */ = {
+		F121FE872FBC9B040092D07A /* Build configuration list for PBXProject "Mealo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F121FE952FBC9B050092D07A /* Debug */,
@@ -322,7 +322,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F121FE972FBC9B050092D07A /* Build configuration list for PBXNativeTarget "TEAM8" */ = {
+		F121FE972FBC9B050092D07A /* Build configuration list for PBXNativeTarget "Mealo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F121FE982FBC9B050092D07A /* Debug */,
