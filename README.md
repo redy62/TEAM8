@@ -50,6 +50,7 @@ companion reactions
 The watch experience stays calm and glanceable.
 
 🎨 Design Philosophy
+
 Mealo is built around:
 emotional safety
 calm interfaces
@@ -68,6 +69,7 @@ soft illustrations
 emotionally adaptive companion states
 
 🛠 Built With
+
 SwiftUI
 Xcode
 Apple WatchKit
