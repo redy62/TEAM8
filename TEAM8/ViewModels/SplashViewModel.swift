@@ -98,3 +98,25 @@ struct SplashView: View {
 #Preview {
     SplashView(onGetStarted: {})
 }
+#Preview {
+    ContentFlowPreview()
+}
+
+struct ContentFlowPreview: View {
+    @State private var showSplash = true
+    @State private var onboardingDone = false
+    
+    var body: some View {
+        if showSplash {
+            SplashView {
+                withAnimation { showSplash = false }
+            }
+        } else if !onboardingDone {
+            SetYourPlanView {
+                withAnimation { onboardingDone = true }
+            }
+        } else {
+            PromiseView(onDone:{} )
+        }
+    }
+}
