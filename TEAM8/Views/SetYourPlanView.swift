@@ -29,23 +29,23 @@ struct SetYourPlanView: View {
                        
                        Text("Set your plan")
                            .font(.custom("Georgia", size: 26))
-                           .foregroundColor(Color("orange"))
+                           .foregroundColor(Color("apporange"))
                            .padding(.bottom, 4)
                        
                        Text("How many meals do you want to track each day?")
                            .font(.system(size: 12))
-                           .foregroundColor(Color("brown").opacity(0.45))
+                           .foregroundColor(Color("appbrown").opacity(0.45))
                            .padding(.bottom, 20)
 
                        // Name field
                        VStack(alignment: .leading, spacing: 6) {
                            Text("WHAT'S YOUR NAME?")
                                .font(.system(size: 11))
-                               .foregroundColor(Color("orange").opacity(0.45))
+                               .foregroundColor(Color("apporange").opacity(0.45))
                                .kerning(1.2)
                            TextField("Your name", text: $userName)
                                .font(.system(size: 15))
-                               .foregroundColor(Color("brown"))
+                               .foregroundColor(Color("appbrown"))
                                .padding(12)
                                .background(Color.white.opacity(0.6))
                                .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -65,7 +65,7 @@ struct SetYourPlanView: View {
                        if !meals.isEmpty && selectedDays != nil {
                            Text("\(Int(mealCount)) meals · \(selectedDays!) days")
                                .font(.system(size: 12))
-                               .foregroundColor(Color("brown").opacity(0.4))
+                               .foregroundColor(Color("appbrown").opacity(0.4))
                                .frame(maxWidth: .infinity, alignment: .center)
                                .padding(.bottom, 10)
                            
@@ -87,9 +87,9 @@ struct SetYourPlanView: View {
                                    .foregroundColor(.white)
                                    .frame(maxWidth: .infinity)
                                    .padding(.vertical, 16)
-                                   .background(Color("orange"))
+                                   .background(Color("apporange"))
                                    .clipShape(Capsule())
-                                   .shadow(color: Color("orange").opacity(0.3), radius: 10, x: 0, y: 4)
+                                   .shadow(color: Color("apporange").opacity(0.3), radius: 10, x: 0, y: 4)
                            }
                            .transition(.opacity)
                        }
@@ -118,21 +118,21 @@ struct SetYourPlanView: View {
            HStack {
                Text("MEALS PER DAY")
                    .font(.system(size: 11))
-                   .foregroundColor(Color("orange").opacity(0.45))
+                   .foregroundColor(Color("apporange").opacity(0.45))
                    .kerning(1.2)
                Spacer()
                Text("\(Int(mealCount))")
                    .font(.custom("Georgia", size: 18))
-                   .foregroundColor(Color("orange"))
+                   .foregroundColor(Color("apporange"))
                    .padding(.horizontal, 14)
                    .padding(.vertical, 3)
-                   .background(Color("orange").opacity(0.1))
+                   .background(Color("apporange").opacity(0.1))
                    .clipShape(Capsule())
                    .animation(.spring(response: 0.3), value: mealCount)
            }
            
            Slider(value: $mealCount, in: 1...6, step: 1)
-               .tint(Color("orange"))
+               .tint(Color("apporange"))
                .onChange(of: mealCount) { newVal in
                    let count = Int(newVal)
                    withAnimation(.spring(response: 0.4, dampingFraction: 0.75)) {
@@ -156,7 +156,7 @@ struct SetYourPlanView: View {
                ForEach(1...6, id: \.self) { n in
                    Text("\(n)")
                        .font(.system(size: 10, weight: Int(mealCount) >= n ? .semibold : .regular))
-                       .foregroundColor(Int(mealCount) >= n ? Color("orange") : Color("orange").opacity(0.35))
+                       .foregroundColor(Int(mealCount) >= n ? Color("apporange") : Color("apporange").opacity(0.35))
                        .frame(maxWidth: .infinity)
                }
            }
@@ -171,7 +171,7 @@ struct SetYourPlanView: View {
        VStack(alignment: .leading, spacing: 10) {
            Text("HOW LONG?")
                .font(.system(size: 11))
-               .foregroundColor(Color("orange").opacity(0.45))
+               .foregroundColor(Color("apporange").opacity(0.45))
                .kerning(1.2)
            
            HStack(spacing: 8) {
@@ -186,13 +186,13 @@ struct SetYourPlanView: View {
                                .font(.system(size: 11))
                                .opacity(0.75)
                        }
-                       .foregroundColor(selectedDays == days ? .white : Color("orange"))
+                       .foregroundColor(selectedDays == days ? .white : Color("apporange"))
                        .frame(maxWidth: .infinity)
                        .padding(.vertical, 16)
-                       .background(selectedDays == days ? Color("orange") : Color("orange").opacity(0.08))
+                       .background(selectedDays == days ? Color("apporange") : Color("apporange").opacity(0.08))
                        .overlay(
                            RoundedRectangle(cornerRadius: 14)
-                               .stroke(Color("orange").opacity(0.25), lineWidth: 1.5)
+                               .stroke(Color("apporange").opacity(0.25), lineWidth: 1.5)
                        )
                        .clipShape(RoundedRectangle(cornerRadius: 14))
                    }
