@@ -1,37 +1,65 @@
 //
-//  TEAM8App.swift
-//  TEAM8
-//
-//  Created by ريناد محمد حملي on 02/12/1447 AH.
+//  MealoApp.swift
+//  Mealo
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MealoApp: App {
-    @State private var showSplash = true
-    @State private var onboardingDone = false
+
+    let container: ModelContainer = {
+        let schema = Schema([MealLog.self, UserProfile.self])
+        let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        do {
+            return try ModelContainer(for: schema, configurations: config)
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
 
     var body: some Scene {
         WindowGroup {
-            if showSplash {
+            RootView()
+        }
+        .modelContainer(container)
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MARK: - RootView
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum AppScreen { case splash, onboarding, promise, home }
+
+struct RootView: View {
+
+    @Query private var profiles: [UserProfile]
+    @State private var screen: AppScreen = .splash
+
+    var body: some View {
+        Group {
+            switch screen {
+            case .splash:
                 SplashView {
-                    withAnimation {
-                        showSplash = false
-                    }
+                    withAnimation { screen = profiles.isEmpty ? .onboarding : .home }
                 }
-            } else if !onboardingDone {
+            case .onboarding:
                 SetYourPlanView {
-                    withAnimation {
-                        onboardingDone = true
-                    }
+                    withAnimation { screen = .promise }
                 }
-            } else {
-                // الصفحة الرئيسية بعد الأونبوردينج
-                PromiseView(onDone: {
-                    // إذا سويت الصفحة الرئيسية الفعلية للتطبيق مستقبلاً، بتناديها هنا
-                    print("انتهى الوعد!")
-                })
+            case .promise:
+                PromiseView {
+                    withAnimation { screen = .home }
+                }
+            case .home:
+                HomepageView()
+            }
+        }
+        .onChange(of: profiles) {
+            if screen == .onboarding && !profiles.isEmpty {
+                withAnimation { screen = .home }
             }
         }
     }
