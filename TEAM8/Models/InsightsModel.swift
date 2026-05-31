@@ -372,3 +372,4 @@ struct InsightsRepository {
         return patternHeadline(from: recent, period: last7)
     }
 }
+
