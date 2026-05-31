@@ -1,4 +1,4 @@
-//
+
 //  InsightsView.swift
 //  Mealo
 //
@@ -25,7 +25,7 @@ private enum MT {
     static let accentSoft = Color("pink")
     static let text       = Color("brown")
     static let muted      = Color("brown").opacity(0.5)
-    static let border     = Color("button")
+    static let border     = Color("pink")
     static let tabOff     = Color("brown").opacity(0.4)
 
     static let xs: CGFloat =  4
@@ -375,8 +375,8 @@ private struct CalendarDayCell: View {
             Text(dayNumber)
                 .font(.system(size: 13, weight: mood != nil ? .semibold : .regular))
                 .foregroundColor(
-                    !isEnabled  ? Color("button")
-                    : mood != nil ? mood?.color
+                    !isEnabled  ? Color("pink")
+                  : mood != nil ? mood!.color
                   : isToday     ? Color("orange")
                                 : Color("brown").opacity(0.55)
                 )
