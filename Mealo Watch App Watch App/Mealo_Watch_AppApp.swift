@@ -2,20 +2,27 @@
 //  Mealo_Watch_AppApp.swift
 //  Mealo Watch App Watch App
 //
-//  Created by Rahaf on 31/05/2026.
-//
-//
-//  WatchApp.swift
-//  Mealo Watch App
-//
 
 import SwiftUI
+import SwiftData
 
-
+@main
 struct MealoWatchApp: App {
+
+    let container: ModelContainer = {
+        let schema = Schema([MealLog.self, UserProfile.self])
+        let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        do {
+            return try ModelContainer(for: schema, configurations: config)
+        } catch {
+            fatalError("Could not create Watch ModelContainer: \(error)")
+        }
+    }()
+
     var body: some Scene {
         WindowGroup {
             WatchContentView()
         }
+        .modelContainer(container)
     }
 }
