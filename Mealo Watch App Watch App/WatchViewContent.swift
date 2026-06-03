@@ -1,12 +1,13 @@
-//  WatchContentView.swift
-//  Mealo
 //
-//  Created by Rahaf on 01/06/2026.
-
+//  WatchViewContent.swift
+//  Mealo Watch App Watch App
+//
 
 import SwiftUI
+import SwiftData
 
 struct WatchContentView: View {
+
     var body: some View {
         TabView {
             WatchStateView()
@@ -14,7 +15,6 @@ struct WatchContentView: View {
             WatchStreakView()
             WatchAnalyticsView()
         }
-        .tabViewStyle(.verticalPage)
+        .tabViewStyle(.page(indexDisplayMode: .always))
     }
 }
-
