@@ -8,115 +8,110 @@
 import SwiftUI
 
 struct SplashView: View {
-    var onGetStarted: () -> Void
-    
-    @State private var characterOffset: CGFloat = 300
-    @State private var characterOpacity: Double = 0
+   var onGetStarted: () -> Void
+   
+   @State private var characterOffset: CGFloat = 300
+   @State private var characterOpacity: Double = 0
+   @State private var textOpacity: Double = 0
 
-    var body: some View {
-        ZStack {
-            Color("background")
+   var body: some View {
+       ZStack {
+           Color("background")
 
-            VStack(spacing: 0) {
-                Spacer()
+           VStack(spacing: 0) {
+               Spacer()
 
-                Image("ch1")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-                    .offset(y: characterOffset)
-                    .opacity(characterOpacity)
+               Image("ch1")
+                   .resizable()
+                   .scaledToFit()
+                   .frame(width: 200, height: 200)
+                   .offset(y: characterOffset)
+                   .opacity(characterOpacity)
 
-                Spacer().frame(height: 32)
+               Spacer().frame(height: 32)
 
-                Text("Mealo")
-                    .font(.custom("Georgia", size: 42))
-                    .foregroundColor(Color("orange"))
-                    .fontWeight(.bold)
+               Text("Mealo")
+                   .font(.custom("Georgia", size: 42))
+                   .foregroundColor(Color("orange"))
+                   .fontWeight(.bold)
 
-                Spacer().frame(height: 12)
+               Spacer().frame(height: 12)
 
-                VStack(spacing: 4) {
-                    Text("Skipping meals isn't a choice, it's a habit")
-                    Text("Let's build a better one.")
-                }
-                .font(.custom("Georgia", size: 14))
-                .foregroundColor(Color("orange").opacity(0.7))
-                .multilineTextAlignment(.center)
+               VStack(spacing: 4) {
+                   Text("Skipping meals isn't a choice, it's a habit")
+                   Text("Let's build a better one.")
+               }
+               .font(.custom("Georgia", size: 14))
+               .foregroundColor(Color("brown").opacity(0.7))
+               .multilineTextAlignment(.center)
+               .opacity(textOpacity)
 
-                Spacer()
+               Spacer().frame(height: 16)
 
-                Text("No pressure, just progress!")
-                    .font(.system(size: 13))
-                    .foregroundColor(Color("orange").opacity(0.5))
+               Text("No pressure, just progress!")
+                   .font(.system(size: 13))
+                   .foregroundColor(Color("orange").opacity(0.5))
+                   .opacity(textOpacity)
 
-                Spacer().frame(height: 48)
-            }
-            .padding(.horizontal, 32)
-        }
-        .ignoresSafeArea()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear {
-            // يدخل من تحت بسرعة
-            withAnimation(.easeOut(duration: 0.4)) {
-                characterOffset = 0
-                characterOpacity = 1
-            }
-            
-            // نطة أولى
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                withAnimation(.easeOut(duration: 0.2)) {
-                    characterOffset = -30
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    withAnimation(.easeIn(duration: 0.2)) {
-                        characterOffset = 0
-                    }
-                }
-            }
-            
-            // نطة ثانية أصغر
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-                withAnimation(.easeOut(duration: 0.15)) {
-                    characterOffset = -15
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.05) {
-                    withAnimation(.easeIn(duration: 0.15)) {
-                        characterOffset = 0
-                    }
-                }
-            }
-            
-            // auto-dismiss بعد 2.5 ثانية
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                onGetStarted()
-            }
-        }
-    }
+               Spacer()
+           }
+           .padding(.horizontal, 32)
+       }
+       .ignoresSafeArea()
+       .frame(maxWidth: .infinity, maxHeight: .infinity)
+       .onAppear {
+           withAnimation(.easeOut(duration: 0.4)) {
+               characterOffset = 0
+               characterOpacity = 1
+           }
+           
+           DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+               withAnimation(.easeOut(duration: 0.2)) {
+                   characterOffset = -30
+               }
+               DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                   withAnimation(.easeIn(duration: 0.2)) {
+                       characterOffset = 0
+                   }
+               }
+           }
+           
+           DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+               withAnimation(.easeIn(duration: 0.4)) {
+                   textOpacity = 1
+               }
+           }
+           
+           DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+               onGetStarted()
+           }
+       }
+   }
 }
 
 #Preview {
-    SplashView(onGetStarted: {})
+   SplashView(onGetStarted: {})
 }
+
 #Preview {
-    ContentFlowPreview()
+   ContentFlowPreview()
 }
 
 struct ContentFlowPreview: View {
-    @State private var showSplash = true
-    @State private var onboardingDone = false
-    
-    var body: some View {
-        if showSplash {
-            SplashView {
-                withAnimation { showSplash = false }
-            }
-        } else if !onboardingDone {
-            SetYourPlanView {
-                withAnimation { onboardingDone = true }
-            }
-        } else {
-            PromiseView(onDone:{} )
-        }
-    }
+   @State private var showSplash = true
+   @State private var onboardingDone = false
+   
+   var body: some View {
+       if showSplash {
+           SplashView {
+               withAnimation { showSplash = false }
+           }
+       } else if !onboardingDone {
+           SetYourPlanView {
+               withAnimation { onboardingDone = true }
+           }
+       } else {
+           PromiseView(onDone:{} )
+       }
+   }
 }
